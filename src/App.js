@@ -3,6 +3,7 @@ import './App.css';
 import React from 'react';
 import { ProfilCart } from './componets/ProfiCart';
 import { TestP } from './componets/TestP';
+import { ToDo } from './componets/ToDo';
 
 const name = ["denys", "Bohdan"];
 
@@ -15,6 +16,7 @@ var options = {
 };
 
 function App() {
+  /*
   let [count, setCount] = React.useState(0);
   let [date, setTime] = React.useState(new Date().toLocaleString() + "");
 
@@ -25,11 +27,14 @@ function App() {
     return () => { clearInterval(i) }
   }, [count])
 
+*/
+
+
   return (
     <div className="App">
       <header className="App-header">
-        {count}
-        <div>{String(date)}</div>
+      <ToDo ></ToDo>
+      
       </header>
     </div>
   );
