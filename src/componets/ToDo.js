@@ -3,26 +3,27 @@ import React from "react";
 
 
 export function ToDo(props) {
-   let [tasks, setTasks] = React.useState([]);
-   const [title, setTitle] = React.useState('')
+   const [tasks, setTasks] = React.useState([]);
+   const [title, setTitle] = React.useState('');
+   const [coutId, setCountId] = React.useState(100);
+
 
    function showTask() {
+
       if (title !== '') {
-         // let newObj = { id: "1", text: title };
-         setTasks(tasks.concat(title));
+         setCountId(coutId + 1);
+         let newObj = { id: coutId, text: title };
+         console.log(newObj);
+         setTasks(tasks.concat(newObj));
       }
-     
       setTitle("");
    }
 
    function deleteTask(key) {
-      function num(value) {
-         return value !== key;
-      }
-      setTasks(tasks.filter(num));
+      setTasks(tasks.filter(item => item.id !== key));
    }
 
-   let listItems = tasks.map(task => <li key={task.toString()}> {task} <button onClick={() => deleteTask(task.toString())}>X</button>  </li>);
+   let listItems = tasks.map(task => <li key={task.id}> {task.text} <button onClick={() => deleteTask(task.id)}>X</button>  </li>);
    return (
       <div>
          <input type="text" value={title} onChange={event => setTitle(event.target.value)} />
